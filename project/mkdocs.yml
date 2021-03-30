@@ -1,5 +1,5 @@
 site_name: openSUSE User Documentation Project
-repo_url: https://github.com/Nycticorax/openSUSE-docs-revamped
+repo_url: https://github.com/openSUSE/openSUSE-docs-revamped
 edit_uri: ""
 
 plugins:
@@ -40,6 +40,9 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/openSUSE
       name: openSUSE GitHub
+
+extra_css: 
+    - styles.css
       
 markdown_extensions:
     - admonition
@@ -56,15 +59,16 @@ nav:
     - Before installing:
         - Choosing a distribution: pick_an_image.md
         - Installation setups: ""
-        - Preparing the installation media: media_choice.md
+        - Preparing the installation media: image_choice.md
     - Installing:
         - Step by step guide: yast_installer.md
         - Quick install for experienced users:
             - microOS specials: microos_getting_started.md
     - Distro basics:
-        - KDE Plasma basics: ""
+        - KDE Plasma basics: kde.md
         - GNOME basics: ""
         - Interlude -- Fundamental openSUSE concepts:
+            - Zypper: zypper.md
             - Snapper: snapper.md
         - Getting & installing software: ""
         - Updating and upgrading: ""
@@ -72,7 +76,9 @@ nav:
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
         - Finding & installing additional software:
-            - NVIDIA driver: install_proprietary.md 
+            - Graphic Drivers: 
+                - Proprietary: install_proprietary.md
+                - Hybrid GPUs: hybrid_graphics.md
         - Security basics: ""
         - Wifi & network: ""
         - Power management: ""

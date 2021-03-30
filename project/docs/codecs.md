@@ -1,5 +1,5 @@
 # Installing Codecs 
-You need to play online or offline multimedia content but the content does not want to play or shows errors. Usually this is a sign of missing codecs: install these packages from Packman to play most music and video:
+You need to play online or offline multimedia content but the content does not play or you receive errors. Usually this is a sign of missing codecs. Due to legal limitations proprietary codecs can't be stored and served directly from the __openSUSE__/__SUSE__ infrastructure. To install certain codec packages you will need to add the Packman repository and install the required software from there. Some commonly used and installed codecs are:
 
 - ffmpeg
 - gstreamer-plugins-good
@@ -9,46 +9,44 @@ You need to play online or offline multimedia content but the content does not w
 - libavcodec-full
 - vlc-codecs
 
-You can get them using Zypper, opi or YaST.
+You can get them using `Zypper`, _OBS Package Installer_ (`opi`) or `YaST`.
+## OBS Package Installer 
+`opi` can be used to search and install software from the _Open Build Service_ (OBS) and it works on __openSUSE__ and __SUSE__. To install the required codecs:
+1. Launch a _terminal emulator_ (_Konsole_, _Gnome Terminal_ etc.),
+1. Install `opi`: `sudo zypper install opi`
+1. Install codecs with `opi`: `opi codecs`
+1. Update the system: `zypper dist-upgrade --from packman`
 
-## Download & install Codecs Using Zypper
+## The manual way
+### Adding the Packman repository
+For installing codecs we have to add the Packman repository. Remember if things don’t work after installing the codecs, make sure all your multimedia packages are coming from Packman.
 
-For Installing codecs we have to add Packman Repo.(Require Root privilages use (su -i)) Remember If things don’t work after installing the codecs, make sure all your multimedia packages are coming from Packman.
-
+#### Using the command line
 Use the following commands to add all of the third-party Packman repository (Packman Essentials is included), according to your installed openSUSE version:
  
-## Tumbleweed
-
+##### Tumbleweed
 `sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman`
 
-## Leap
-
+##### Leap
 `sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_$releasever/' packman`
 
-#
+#### Using YaST
+1. Launch `YaST`,
+1. Select _Software Repositories_,
+1. Press _Add_ (lower left corner),
+1. From the list select _Community repositories_ and press _Next_,
+1. Select _Packman Repository_ and press _Ok_.
 
-Then, install the desired codecs by first refreshing your local repository database and allowing vendor change for the required packages
+### Installing codecs
+#### Using the command line
+1. Refresh your local repository: `sudo zypper ref`,
+1. Install some generally needed codecs: `zypper install k3b-codecs ffmpeg lame gstreamer-plugins-libav gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-good gstreamer-fluendo-mp3 libdvdcss2`,
+1. Update everyting to the latest Version `zypper dist-upgrade --from packman`.
 
-1. Add  Pacman Repo `zypper addrepo -f http://packman.inode.at/suse/openSUSE_Tumbleweed/packman`
-2. Installing Multimedia codecs `zypper install vlc vlc-codecs k3b-codecs ffmpeg lame gstreamer-plugins-libav gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-good gstreamer-fluendo-mp3 libdvdcss2`
-3. Update to latest Version `zypper dist-upgrade --from packman`
- 
-# Installing Codecs for DVDs Using Zypper
+#### Using YaST
+1. Launch `YaST`,
+1. Select _Software Management_,
+1. View > Repositories > Packman Repository,
+1. Click "Switch system packages" to packages from Packman repository.
 
-You can install any DVD player(for example VLC) using following commands.
-
-1. `sudo zypper ar https://download.videolan.org/SuSE/<SUSE version> VLC`
-2. `sudo zypper mr -r VLC`
-3. `sudo zypper in vlc`
-
-# OBS Package Installer
-
-opi (Open Build Service Package Installer) works on both Leap and Tumbleweed:
-
-1. `sudo zypper install opi`
-2. `opi codecs`
-
-
-
-
-
+Furthermore you can type in the _Search_ field the name of the codec packages you're looking for.
